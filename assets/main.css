@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&family=Instrument+Serif:ital@0;1&display=swap');
+
+
+:root{
+
+
+  --font1:"Imbue", serif;
+  --font2:"Instrument Serif", serif;
+  --c1:#DCDCDC;
+  --c2:#A8A8A8;
+  --tra200:ease-in-out 200ms;
+
+}
+
+
+body{
+  background-color: #000000;
+  font-family: var(--font1);
+  color: var(--c1);
+}
+
+/* .imbue-<uniquifier> {
+  font-family: "Imbue", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+
+.instrument-serif-regular {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.instrument-serif-regular-italic {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+} */
