@@ -1,6 +1,9 @@
 <template>
-  <Navbar/>
-  <Hero/>
+  <main>
+
+    <Navbar/>
+    <Hero/>
+  </main>
 </template>
 
 <script lang="ts" setup>

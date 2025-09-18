@@ -1,10 +1,18 @@
 <template>
   <div class="nav-bar">
-    <div class="nav">Home</div>
+
+    <NuxtLink to="/">
+      <div class="nav">Home</div>
+    </NuxtLink>
+
     <div class="nav">Projects</div>
     <div class="nav">Contacts</div>
     <div class="nav">Pricing</div>
-    <div class="nav">Policy</div>
+
+    <NuxtLink to="/policy">
+
+      <div class="nav">Policy</div>
+    </NuxtLink>
 
   </div>
 </template>
@@ -22,6 +30,7 @@
   flex-direction: row;
   gap: 30px;
   margin: 30px;
+  z-index: 100;
 }
 
 .nav{

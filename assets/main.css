@@ -19,6 +19,11 @@ body{
   color: var(--c1);
 }
 
+a{
+  text-decoration: none;
+  color: var(--c1);
+}
+
 /* .imbue-<uniquifier> {
   font-family: "Imbue", serif;
   font-optical-sizing: auto;

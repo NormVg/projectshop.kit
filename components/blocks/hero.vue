@@ -40,8 +40,9 @@ import Navbar from "~/components/Navbar.vue";
   height: calc(100vh - 30px);
   width: calc(100vw - 30px);
   background-image: url(~/assets/homebg.png);
+  background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   overflow: hidden;
 }
 
