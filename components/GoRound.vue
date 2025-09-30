@@ -16,16 +16,15 @@ import Logo from "~/assets/logo.png"
 
 <style scoped>
 .container {
-  position: relative;
+  position: absolute;
   width: 150px; /* Set a fixed width for better stacking */
   height: 150px; /* Set a fixed height for better stacking */
   display: flex;
   align-items: center;
   justify-content: center;
-left: calc(100% - 160px);
-bottom: calc(25% - 200px);
-
-scale: .8;
+  top: 20px;
+  right: 20px;
+  scale: .8;
 }
 
 .arrow{

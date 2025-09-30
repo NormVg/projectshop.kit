@@ -7,14 +7,20 @@
 
 
     <div class="txtb">
-      Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence.
+      <RevealText text="Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence." />
+      <!-- Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence. -->
     </div>
 
     <div class="bat">
 
-    PROJECT KIT
+    <!-- PROJECT KIT -->
+     <main>
 
-    <span>SHOP</span>
+       <TagFoot text="PROJECT KIT" />
+     </main>
+
+
+    <span><TagFoot text="SHOP" :start-delay="500"/></span>
   </div>
     </div>
   </div>
@@ -49,17 +55,20 @@ import Navbar from "~/components/Navbar.vue";
 
 .bat{
   font-size: 250px;
-  background: linear-gradient(to bottom, var(--c1), #262525 77%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  position: relative;
-  top: 32%;
-  /* user-select: none; */
-  /* position: absolute; */
-  /* bottom: -50px */
+  width: max-content;
+  display: flex;
+  align-items: flex-end;
+
+
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
 }
+.bat main{
+margin-bottom: -30px;
+
+}
+
 
 .bat span{
   font-size: 125px;
@@ -68,11 +77,14 @@ import Navbar from "~/components/Navbar.vue";
 .txtb{
   width: 300px;
   padding-top: 20px;
-  margin-left: 150px;
-  margin-top: 25px;
+  font-size: 17px;
+  margin-left: 9%;
   color: var(--c2);
   border-top: 2px solid var(--c1);
   font-family: var(--font2);
+  position: absolute;
+  top: 30%;
+  transform: translateY(-30%);
 }
 </style>
 

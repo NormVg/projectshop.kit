@@ -7,7 +7,10 @@
 
     <div class="nav">Projects</div>
     <div class="nav">Contacts</div>
-    <div class="nav">Pricing</div>
+
+    <NuxtLink to="/pricing">
+      <div class="nav">Pricing</div>
+    </NuxtLink>
 
     <NuxtLink to="/policy">
 
