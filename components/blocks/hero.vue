@@ -59,10 +59,12 @@ import Navbar from "~/components/Navbar.vue";
   display: flex;
   align-items: flex-end;
 
-
+  /* border: 1px solid salmon; */
+  line-height: 100%;
   position: absolute;
-  bottom: -15px;
+  bottom: 0px;
   left: 10px;
+  overflow: hidden;
 }
 .bat main{
 margin-bottom: -30px;
@@ -71,6 +73,7 @@ margin-bottom: -30px;
 
 
 .bat span{
+  margin-bottom: -50px;
   font-size: 125px;
 }
 
@@ -85,6 +88,46 @@ margin-bottom: -30px;
   position: absolute;
   top: 30%;
   transform: translateY(-30%);
+}
+
+/* Responsive design for smaller vertical spaces */
+@media (max-height: 600px) {
+  .bat {
+    font-size: 180px !important;
+  }
+  .bat span {
+    font-size: 90px !important;
+  }
+  .txtb {
+    font-size: 14px;
+    width: 250px;
+  }
+}
+
+@media (max-height: 500px) {
+  .bat {
+    font-size: 120px !important;
+  }
+  .bat span {
+    font-size: 60px !important;
+  }
+  .txtb {
+    font-size: 12px;
+    width: 200px;
+  }
+}
+
+@media (max-height: 400px) {
+  .bat {
+    font-size: 80px !important;
+  }
+  .bat span {
+    font-size: 40px !important;
+  }
+  .txtb {
+    font-size: 10px;
+    width: 150px;
+  }
 }
 </style>
 

@@ -9,7 +9,7 @@ const prop = defineProps({
 
 function splitTextAndHTML(input) {
   // Regular expression to match text and HTML tags
-  const regex = /(<a[^>]*>[^<]*<\/a>|<br\s*\/?>|<[^>]+>|[^<]+)/g;
+  const regex = /(<a[^>]*>[^<]*<\/a>|<i[^>]*>[^<]*<\/i>|<br\s*\/?>|<[^>]+>|[^<]+)/g;
 
   const parts = input.match(regex);
 

@@ -35,11 +35,9 @@
           <div class="pcb"> <span>◆</span> <RevealText text="Great for resume and GitHub showcase" /></div>
         </div>
 
-        <div class="pc-btn">
-        Get <i>STARTED</i>
-        </div>
 
-        <!-- <RevealText :text="c1" /> -->
+          <MyBtn text="Get <i>STARTED</i>" />
+
 
       </div>
 
@@ -53,9 +51,11 @@
         <div class="pcb"> <span>◆</span> <RevealText text="One-on-one guidance available" /></div>
         <div class="pcb"> <span>◆</span> <RevealText text="Priority delivery timeline" /></div>
       </div>
-      <div class="pc-btn">
+      <!-- <div class="pc-btn">
           <RevealText text="CONNECT" />
-      </div>
+      </div> -->
+
+      <MyBtn text="CONNECT" />
 
       </div>
     </main>
@@ -99,8 +99,7 @@ import ballMesh from "~/assets/ballMesh.svg";
   background: var(--c1);
   border-radius: 2px;
   box-shadow: 0 0 8px var(--c1), 0 0 4px #fff;
-  animation: pulseGlow 3s infinite alternate;
-
+  animation: pulseGlow 3s infinite ease-in-out;
 }
 
 .lbl1 {
@@ -121,6 +120,7 @@ import ballMesh from "~/assets/ballMesh.svg";
   bottom: -17%;
   right: 50%;
   margin-right: -400px;
+
   height: 100vh;
   /* width: 50px; */
   display: flex;
@@ -137,7 +137,7 @@ import ballMesh from "~/assets/ballMesh.svg";
   background: var(--c1);
   border-radius: 2px;
   box-shadow: 0 0 8px var(--c1), 0 0 4px #fff;
-  animation: pulseGlow 1.5s infinite alternate ease-in-out;
+  animation: pulseGlow 2.2s infinite ease-in-out;
 }
 
 @keyframes pulseGlow {
@@ -145,8 +145,44 @@ import ballMesh from "~/assets/ballMesh.svg";
     box-shadow: 0 0 8px var(--c1), 0 0 4px #fff;
     opacity: 1;
   }
+  10% {
+    box-shadow: 0 0 2px var(--c1), 0 0 1px #fff;
+    opacity: 0.3;
+  }
+  15% {
+    box-shadow: 0 0 20px var(--c1), 0 0 25px #fff;
+    opacity: 0.9;
+  }
+  25% {
+    box-shadow: 0 0 5px var(--c1), 0 0 2px #fff;
+    opacity: 0.4;
+  }
+  30% {
+    box-shadow: 0 0 25px var(--c1), 0 0 35px #fff;
+    opacity: 1;
+  }
+  45% {
+    box-shadow: 0 0 3px var(--c1), 0 0 1px #fff;
+    opacity: 0.2;
+  }
+  50% {
+    box-shadow: 0 0 18px var(--c1), 0 0 22px #fff;
+    opacity: 0.8;
+  }
+  65% {
+    box-shadow: 0 0 6px var(--c1), 0 0 3px #fff;
+    opacity: 0.5;
+  }
+  70% {
+    box-shadow: 0 0 30px var(--c1), 0 0 40px #fff;
+    opacity: 1;
+  }
+  85% {
+    box-shadow: 0 0 4px var(--c1), 0 0 2px #fff;
+    opacity: 0.3;
+  }
   100% {
-    box-shadow: 0 0 24px var(--c1), 0 0 30px #fff;
+    box-shadow: 0 0 15px var(--c1), 0 0 18px #fff;
     opacity: 0.7;
   }
 }

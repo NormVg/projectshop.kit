@@ -1,6 +1,6 @@
 <template>
   <div class="ml16" :class="{ show: isShown }">
-    <span v-for="(word, wi) in words" :key="wi" class="word">
+    <span v-for="(word, wi) in words" :key="wi" class="word" :data-text="word">
       <span
         v-for="(char, ci) in word.split('')"
         :key="ci"
@@ -59,6 +59,8 @@ onMounted(() => {
 .ml16 {
   white-space: nowrap;
   width: max-content;
+  overflow: hidden;
+  height: max-content;
 }
 .ml16 .word {
   display: inline-block;
@@ -74,24 +76,25 @@ onMounted(() => {
   animation-name: raise;
   animation-duration: 600ms;
   animation-fill-mode: forwards;
-}
-.ml16.show .letter {
-  /* no extra rules needed */
-}
-
-.word{
-    /* background: linear-gradient(to bottom, var(--c1), #262525 85%) */
-    background: linear-gradient(
-  to bottom,
-  var(--c1) 0%,
-  rgba(38, 37, 37, 0) 77%,
-  #262525 100%
-);
+  /* Apply background-clip to individual letters to avoid Chrome bug */
+  background: linear-gradient(
+    to bottom,
+    var(--c1) 0%,
+    rgba(38, 37, 37, 0) 77%,
+    #262525 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  /* Isolate each letter to prevent stacking context issues */
+  isolation: isolate;
+}
+
+.word{
+  /* Simple container - no background-clip here */
   position: relative;
+  overflow: hidden;
 }
 
 @keyframes raise {
