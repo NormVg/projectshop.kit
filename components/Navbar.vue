@@ -5,8 +5,15 @@
       <div class="nav">Home</div>
     </NuxtLink>
 
-    <div class="nav">Projects</div>
-    <div class="nav">Contacts</div>
+
+      <NuxtLink to="#prog">
+        <div class="nav">Projects</div>
+      </NuxtLink>
+
+      <NuxtLink to="#contacts">
+        <div class="nav">Contacts</div>
+      </NuxtLink>
+
 
     <NuxtLink to="/pricing">
       <div class="nav">Pricing</div>

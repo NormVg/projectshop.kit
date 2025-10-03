@@ -20,7 +20,7 @@ const props = defineProps({
 .pc-btn {
   background-image: url("~/assets/btnBG.png");
   /* background-size: ; */
-
+  background-color: var(--bg2);
   background-position: cover;
   background-size: cover;
   border: 1px solid var(--c1);

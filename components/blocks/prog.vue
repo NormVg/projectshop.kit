@@ -1,5 +1,5 @@
 <template>
-  <div class="prog">
+  <div id="prog">
     <div class="progbox">
       <div class="btn-left"><img :src="leftBtn" alt="left btn" @click="prevCard"></div>
 
@@ -366,7 +366,7 @@ const prevCard = () => {
   /* border: 1px solid salmon; */
 }
 
-.prog {
+#prog {
   margin-top: 100px;
   display: flex;
   align-items: center;

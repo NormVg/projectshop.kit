@@ -58,8 +58,8 @@ onMounted(() => {
 <style scoped>
 .ml16 {
   white-space: nowrap;
-  width: max-content;
-  overflow: hidden;
+  width: 100%;
+  /* overflow: hidden; */
   height: max-content;
 }
 .ml16 .word {
@@ -95,6 +95,7 @@ onMounted(() => {
   /* Simple container - no background-clip here */
   position: relative;
   overflow: hidden;
+  margin-left: 2%;
 }
 
 @keyframes raise {
