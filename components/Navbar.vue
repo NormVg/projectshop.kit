@@ -6,11 +6,11 @@
     </NuxtLink>
 
 
-      <NuxtLink to="#prog">
+      <NuxtLink to="/#prog">
         <div class="nav">Projects</div>
       </NuxtLink>
 
-      <NuxtLink to="#contacts">
+      <NuxtLink to="/#contact">
         <div class="nav">Contacts</div>
       </NuxtLink>
 

@@ -378,6 +378,7 @@ const prevCard = () => {
   background-repeat: no-repeat;
 
   box-shadow: inset 0 0 120px 90px rgba(0, 0, 0, 0.95);
+  margin-bottom: 120px;
   /* filter: brightness(0.6) contrast(1.2); */
 }
 </style>

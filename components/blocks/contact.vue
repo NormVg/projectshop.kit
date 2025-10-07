@@ -50,7 +50,7 @@ import RevealText from "../RevealText.vue";
 
 .contact-form {
   position: absolute;
-  top: 50px;
+  top: 80px;
   left: 60px;
   background: transparent;
   padding: 0;
@@ -147,7 +147,7 @@ margin-left: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 98vh;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   /* border: 1px solid salmon; */
