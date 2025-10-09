@@ -1,5 +1,5 @@
 <template>
-  <div id="prog">
+  <div id="prog" :class="{ 'initial-load': showInitialAnimation }">
     <div class="progbox">
       <div class="btn-left"><img :src="leftBtn" alt="left btn" @click="prevCard"></div>
 
@@ -53,6 +53,14 @@ const cards = ref([
 
 
 const cardBlur = ref(false)
+const showInitialAnimation = ref(true)
+
+// Remove initial animation class after animations complete
+onMounted(() => {
+  setTimeout(() => {
+    showInitialAnimation.value = false;
+  }, 1400); // 0.6s delay + 0.8s animation = 1.4s total
+})
 
 
 
@@ -214,103 +222,73 @@ const prevCard = () => {
   animation: blurFadeBlur 1s ease-in-out;
 }
 
-/* Different blur animations for each console element */
+/* Minimal and classy animations with fade blur for console elements */
 .console-head.blur {
-  animation: headSlideBlur 1s ease-in-out;
+  animation: subtleFadeBlur 1s ease-out;
 }
 
 .console-sub.blur {
-  animation: subFadeBlur 1s ease-in-out;
+  animation: gentleSlideBlur 1s ease-out;
 }
 
 .console-btn.blur {
-  animation: btnScaleBlur 1s ease-in-out;
+  animation: softScaleBlur 1s ease-out;
 }
 
-/* Head animation - slide from left with blur */
-@keyframes headSlideBlur {
+/* Head animation - subtle fade with blur */
+@keyframes subtleFadeBlur {
   0% {
-    filter: blur(0px);
     opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.2;
+    filter: blur(3px);
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
+/* Sub animation - gentle horizontal slide with blur */
+@keyframes gentleSlideBlur {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
     transform: translateX(0);
   }
-  25% {
-    filter: blur(6px);
-    opacity: 0.4;
-    transform: translateX(-30px);
-  }
   50% {
-    filter: blur(10px);
-    opacity: 0.1;
-    transform: translateX(-50px);
-  }
-  75% {
-    filter: blur(6px);
-    opacity: 0.4;
-    transform: translateX(30px);
+    opacity: 0.3;
+    filter: blur(2px);
+    transform: translateX(-15px);
   }
   100% {
-    filter: blur(0px);
     opacity: 1;
+    filter: blur(0px);
     transform: translateX(0);
   }
 }
 
-/* Sub animation - fade with vertical movement */
-@keyframes subFadeBlur {
+/* Button animation - soft scale with blur */
+@keyframes softScaleBlur {
   0% {
-    filter: blur(0px);
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  25% {
-    filter: blur(8px);
-    opacity: 0.2;
-    transform: translateY(-15px) scale(0.95);
+    filter: blur(0px);
+    transform: scale(1);
   }
   50% {
-    filter: blur(12px);
-    opacity: 0;
-    transform: translateY(-25px) scale(0.9);
-  }
-  75% {
-    filter: blur(8px);
-    opacity: 0.2;
-    transform: translateY(15px) scale(0.95);
+    opacity: 0.4;
+    filter: blur(2.5px);
+    transform: scale(0.95);
   }
   100% {
-    filter: blur(0px);
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Button animation - scale with rotation and blur */
-@keyframes btnScaleBlur {
-  0% {
     filter: blur(0px);
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-  25% {
-    filter: blur(5px);
-    opacity: 0.3;
-    transform: scale(0.9) rotate(-5deg);
-  }
-  50% {
-    filter: blur(8px);
-    opacity: 0.1;
-    transform: scale(0.8) rotate(0deg);
-  }
-  75% {
-    filter: blur(5px);
-    opacity: 0.3;
-    transform: scale(1.1) rotate(5deg);
-  }
-  100% {
-    filter: blur(0px);
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
+    transform: scale(1);
   }
 }
 
@@ -380,6 +358,45 @@ const prevCard = () => {
   box-shadow: inset 0 0 120px 90px rgba(0, 0, 0, 0.95);
   margin-bottom: 120px;
   /* filter: brightness(0.6) contrast(1.2); */
+}
+
+
+/* Animate all main elements on page load */
+.initial-load .progbox,
+.initial-load .btn-left,
+.initial-load .btn-right,
+.initial-load .box-cen,
+.initial-load .list-item,
+.initial-load .box-console,
+.initial-load .console-head,
+.initial-load .console-sub,
+.initial-load .console-btn {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.initial-load .progbox { animation-delay: 0.1s; }
+.initial-load .btn-left { animation-delay: 0.2s; }
+.initial-load .btn-right { animation-delay: 0.2s; }
+.initial-load .box-cen { animation-delay: 0.25s; }
+.initial-load .list-item.l1 { animation-delay: 0.3s; }
+.initial-load .list-item.l2 { animation-delay: 0.35s; }
+.initial-load .list-item.l3 { animation-delay: 0.4s; }
+.initial-load .box-console { animation-delay: 0.45s; }
+.initial-load .console-head { animation-delay: 0.5s; }
+.initial-load .console-sub { animation-delay: 0.55s; }
+.initial-load .console-btn { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 </style>
 
