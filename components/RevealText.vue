@@ -1,10 +1,11 @@
 <template>
-  <span v-html="`${item} `" class="text-block-animation" v-for="item, iter in splitTextAndHTML(prop.text)" :key="item" :style="`animation-duration: calc(1s + ${iter*100}ms);`"> </span>
+  <span v-html="`${item} `" class="text-block-animation" v-for="item, iter in splitTextAndHTML(prop.text)"
+    :key="`${item}-${iter}`" :style="`animation-duration: 0.5s; animation-delay: ${iter * 0.08}s;`"> </span>
 </template>
 
 <script setup>
 const prop = defineProps({
-    text:String
+  text: String
 })
 
 function splitTextAndHTML(input) {
@@ -68,11 +69,11 @@ function splitTextAndHTML(input) {
 
   var newRes = []
   result.forEach(element => {
-    if (element.type === "text"){
-       var items = element.content.split(" ")
+    if (element.type === "text") {
+      var items = element.content.split(" ")
 
-       newRes.push(...items)
-    }else{
+      newRes.push(...items)
+    } else {
       newRes.push(element.content)
     }
   });
@@ -84,27 +85,29 @@ function splitTextAndHTML(input) {
 </script>
 
 <style scoped>
-.text-block-animation{
-    animation-name: faderOut;
+.text-block-animation {
+  animation-name: faderOut;
 
 
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    opacity: 0;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  opacity: 0;
 }
+
 @keyframes faderOut {
-    0% {
-        opacity: 0;
-        filter: blur(10px);
-    }
-    50%{
-      filter: blur(0px);
-    }
-    100%{
-        opacity: 1;
-        filter: blur(0px);
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
 
-    }
+  50% {
+    filter: blur(0px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+
+  }
 }
-
 </style>

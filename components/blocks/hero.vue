@@ -6,24 +6,30 @@
       <GoRound />
 
 
-      <div class="txtb">
+      <motion.div :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }" :inViewOptions="{ once: true, amount: 0.3 }"
+        class="txtb">
         <RevealText
           text="Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence." />
         <!-- Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence. -->
-      </div>
+      </motion.div>
 
       <div class="bat">
 
         <!-- PROJECT KIT -->
-        <main>
+        <motion.main :initial="{ opacity: 0, y: 60 }" :whileInView="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }"
+          :inViewOptions="{ once: true, amount: 0.3 }">
 
           <TagFoot text="PROJECT KIT" />
-        </main>
+        </motion.main>
 
 
-        <span>
+        <motion.span :initial="{ opacity: 0, y: 60 }" :whileInView="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.4 }"
+          :inViewOptions="{ once: true, amount: 0.3 }">
           <TagFoot text="SHOP" :start-delay="500" />
-        </span>
+        </motion.span>
       </div>
     </div>
   </div>

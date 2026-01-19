@@ -1,48 +1,61 @@
 <template>
-  <div id="contact">
+  <motion.div id="contact" :initial="{ opacity: 0, y: 50 }" :whileInView="{ opacity: 1, y: 0 }"
+    :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }" :inViewOptions="{ once: true, amount: 0.2 }">
 
 
-    <img :src="HBallMesh" alt="" class="hballmesh" />
+    <motion.img :src="HBallMesh" alt="" class="hballmesh" :initial="{ opacity: 0, scale: 0.9 }"
+      :whileInView="{ opacity: 1, scale: 1 }" :transition="{ duration: 1, ease: [0.23, 1, 0.32, 1] }"
+      :inViewOptions="{ once: true, amount: 0.2 }" />
 
 
     <div class="contact-form">
-      <div class="contact-form__title">
+      <motion.div class="contact-form__title" :initial="{ opacity: 0, y: 20 }" :whileInView="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }" :inViewOptions="{ once: true }">
 
         <RevealText text="Leave a application, we will contact you soon" />
-      </div>
+      </motion.div>
 
-      <div class="contact-form__field cf1">
-        <div class="contact-form__label"> Name</div>
+      <motion.div class="contact-form__field cf1" :initial="{ opacity: 0, x: -40 }" :whileInView="{ opacity: 1, x: 0 }"
+        :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.1 }" :inViewOptions="{ once: true }">
+        <div class="contact-form__label">Name</div>
         <input type="text" class="contact-form__input">
-      </div>
+      </motion.div>
 
-      <div class="contact-form__field cf2">
+      <motion.div class="contact-form__field cf2" :initial="{ opacity: 0, x: -40 }" :whileInView="{ opacity: 1, x: 0 }"
+        :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.25 }" :inViewOptions="{ once: true }">
         <div class="contact-form__label">Email</div>
         <input type="text" class="contact-form__input">
-      </div>
+      </motion.div>
 
-      <div class="contact-form__field cf3">
+      <motion.div class="contact-form__field cf3" :initial="{ opacity: 0, x: -40 }" :whileInView="{ opacity: 1, x: 0 }"
+        :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.4 }" :inViewOptions="{ once: true }">
         <div class="contact-form__label">Message</div>
         <input type="text" class="contact-form__input">
-      </div>
+      </motion.div>
 
-      <MyBtn text="Submit" class="contact-form__submit" />
+      <motion.div :initial="{ opacity: 0, y: 20 }" :whileInView="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.55 }" :inViewOptions="{ once: true }">
+        <MyBtn text="Submit" class="contact-form__submit" />
+      </motion.div>
     </div>
 
 
-    <div class="bat">
+    <motion.div class="bat" :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.3 }"
+      :inViewOptions="{ once: true, amount: 0.3 }">
       <TagFoot text="Work with us" />
       <!-- CONTACT -->
-    </div>
+    </motion.div>
 
 
-  </div>
+  </motion.div>
 </template>
 
 <script setup>
 import HBallMesh from "~/assets/hballMesh.png";
 import MyBtn from "../MyBtn.vue";
 import RevealText from "../RevealText.vue";
+import { motion } from "motion-v";
 </script>
 
 <style scoped>
@@ -52,7 +65,7 @@ import RevealText from "../RevealText.vue";
   left: 60px;
   background: transparent;
   padding: 0;
-  z-index: 5;
+  z-index: 10;
   /* width: 420px; */
   display: flex;
   align-items: flex-start;
@@ -65,30 +78,14 @@ import RevealText from "../RevealText.vue";
 
 .contact-form__field.cf1 {
   width: 300px;
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: fadeInLeft 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.1s forwards;
 }
 
 .contact-form__field.cf2 {
   width: 400px;
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: fadeInLeft 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.35s forwards;
 }
 
 .contact-form__field.cf3 {
   width: 500px;
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: fadeInLeft 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.6s forwards;
-}
-
-@keyframes fadeInLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 
@@ -156,11 +153,12 @@ import RevealText from "../RevealText.vue";
   position: absolute;
   bottom: 0;
   right: 0;
-  opacity: 1;
-  z-index: -1;
+  opacity: 0.8;
+  z-index: 1;
   width: 70%;
-  margin: 20px
-    /* max-width: 400px; */
+  margin: 20px;
+  pointer-events: none;
+  /* max-width: 400px; */
 }
 
 

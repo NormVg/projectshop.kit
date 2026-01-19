@@ -40,9 +40,7 @@
           <div class="pcb"> <span>◆</span>
             <RevealText text="Perfect for resume and GitHub" />
           </div>
-          <div class="pcb"> <span>◆</span>
-            <RevealText text="Great for resume and GitHub showcase" />
-          </div>
+
         </div>
 
 

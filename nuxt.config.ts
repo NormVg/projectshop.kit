@@ -10,5 +10,5 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ["@vueuse/nuxt"]
+  modules: ["@vueuse/nuxt", "motion-v/nuxt"]
 })

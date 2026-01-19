@@ -1,26 +1,60 @@
 <template>
-  <div id="prog" :class="{ 'initial-load': showInitialAnimation }">
-    <div class="progbox">
-      <div class="btn-left"><img :src="leftBtn" alt="left btn" @click="prevCard"></div>
+  <div id="prog">
+    <motion.div :initial="{ opacity: 0, y: 40, scale: 0.98 }" :whileInView="{ opacity: 1, y: 0, scale: 1 }"
+      :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.1 }" :inViewOptions="{ once: true, amount: 0.2 }"
+      class="progbox">
+      <motion.div :initial="{ opacity: 0, x: -20 }" :whileInView="{ opacity: 1, x: 0 }"
+        :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.2 }" :inViewOptions="{ once: true }"
+        class="btn-left">
+        <img :src="leftBtn" alt="left btn" @click="prevCard">
+      </motion.div>
 
       <div class="box-cen">
         <div class="list-box">
-          <div class="list-item l1" :class="{ 'blur': cardBlur }">{{ activeCards[0].name }}</div>
-          <div class="list-item l2" :class="{ 'blur': cardBlur }">{{ activeCards[1].name }}</div>
-          <div class="list-item l3" :class="{ 'blur': cardBlur }">{{ activeCards[2].name }}</div>
+          <motion.div :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.3 }"
+            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l1" :class="{ 'blur': cardBlur }">
+            {{ activeCards[0].name }}
+          </motion.div>
+          <motion.div :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.35 }"
+            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l2" :class="{ 'blur': cardBlur }">
+            {{ activeCards[1].name }}
+          </motion.div>
+          <motion.div :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.4 }"
+            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l3" :class="{ 'blur': cardBlur }">
+            {{ activeCards[2].name }}
+          </motion.div>
         </div>
 
-        <div class="box-console">
-          <div class="console-head" :class="{ 'blur': cardBlur }">{{ activeCards[1].name }}</div>
-          <div class="console-sub" :class="{ 'blur': cardBlur }">{{ activeCards[1].sub }}</div>
-          <div class="console-btn" :class="{ 'blur': cardBlur }">
+        <motion.div :initial="{ opacity: 0, y: 30 }" :whileInView="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.45 }" :inViewOptions="{ once: true }"
+          class="box-console">
+          <motion.div :initial="{ opacity: 0 }" :whileInView="{ opacity: 1 }"
+            :transition="{ duration: 0.5, delay: 0.5 }" :inViewOptions="{ once: true }" class="console-head"
+            :class="{ 'blur': cardBlur }">
+            {{ activeCards[1].name }}
+          </motion.div>
+          <motion.div :initial="{ opacity: 0 }" :whileInView="{ opacity: 1 }"
+            :transition="{ duration: 0.5, delay: 0.55 }" :inViewOptions="{ once: true }" class="console-sub"
+            :class="{ 'blur': cardBlur }">
+            {{ activeCards[1].sub }}
+          </motion.div>
+          <motion.div :initial="{ opacity: 0, scale: 0.95 }" :whileInView="{ opacity: 1, scale: 1 }"
+            :transition="{ duration: 0.5, delay: 0.6 }" :inViewOptions="{ once: true }" class="console-btn"
+            :class="{ 'blur': cardBlur }">
             <MyBtn :text="activeCards[1].tag" />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div class="btn-right"><img :src="rightBtn" alt="right btn" @click="nextCard"></div>
-    </div>
+      <motion.div :initial="{ opacity: 0, x: 20 }" :whileInView="{ opacity: 1, x: 0 }"
+        :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.2 }" :inViewOptions="{ once: true }"
+        class="btn-right">
+        <img :src="rightBtn" alt="right btn" @click="nextCard">
+      </motion.div>
+    </motion.div>
   </div>
 </template>
 
@@ -28,6 +62,7 @@
 import leftBtn from "~/assets/leftbtn.png"
 import rightBtn from "~/assets/rightbtn.png"
 import MyBtn from "../MyBtn.vue"
+import { motion } from "motion-v"
 
 const cards = ref([
   { name: "Portfolio Boomer", id: "cardID-1", sub: "One of the best selling prog type", tag: "$19" },
@@ -53,14 +88,6 @@ const cards = ref([
 
 
 const cardBlur = ref(false)
-const showInitialAnimation = ref(true)
-
-// Remove initial animation class after animations complete
-onMounted(() => {
-  setTimeout(() => {
-    showInitialAnimation.value = false;
-  }, 1400); // 0.6s delay + 0.8s animation = 1.4s total
-})
 
 
 
@@ -368,77 +395,5 @@ const prevCard = () => {
   box-shadow: inset 0 0 120px 90px rgba(0, 0, 0, 0.95);
   margin-bottom: 120px;
   /* filter: brightness(0.6) contrast(1.2); */
-}
-
-
-/* Animate all main elements on page load */
-.initial-load .progbox,
-.initial-load .btn-left,
-.initial-load .btn-right,
-.initial-load .box-cen,
-.initial-load .list-item,
-.initial-load .box-console,
-.initial-load .console-head,
-.initial-load .console-sub,
-.initial-load .console-btn {
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-.initial-load .progbox {
-  animation-delay: 0.1s;
-}
-
-.initial-load .btn-left {
-  animation-delay: 0.2s;
-}
-
-.initial-load .btn-right {
-  animation-delay: 0.2s;
-}
-
-.initial-load .box-cen {
-  animation-delay: 0.25s;
-}
-
-.initial-load .list-item.l1 {
-  animation-delay: 0.3s;
-}
-
-.initial-load .list-item.l2 {
-  animation-delay: 0.35s;
-}
-
-.initial-load .list-item.l3 {
-  animation-delay: 0.4s;
-}
-
-.initial-load .box-console {
-  animation-delay: 0.45s;
-}
-
-.initial-load .console-head {
-  animation-delay: 0.5s;
-}
-
-.initial-load .console-sub {
-  animation-delay: 0.55s;
-}
-
-.initial-load .console-btn {
-  animation-delay: 0.6s;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 </style>

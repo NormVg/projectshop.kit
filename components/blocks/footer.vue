@@ -1,22 +1,30 @@
 <template>
 
-  <div class="line-box">
-    <div class="l1 line"></div>
-    <div class="l2 line"></div>
-    <div class="l3 line"></div>
-  </div>
+  <motion.div class="line-box" :initial="{ opacity: 0, y: 30 }" :whileInView="{ opacity: 1, y: 0 }"
+    :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }" :inViewOptions="{ once: true, amount: 0.5 }">
+    <motion.div class="l1 line" :initial="{ scaleY: 0 }" :whileInView="{ scaleY: 1 }"
+      :transition="{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.1 }" :inViewOptions="{ once: true }" />
+    <motion.div class="l2 line" :initial="{ scaleY: 0 }" :whileInView="{ scaleY: 1 }"
+      :transition="{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.2 }" :inViewOptions="{ once: true }" />
+    <motion.div class="l3 line" :initial="{ scaleY: 0 }" :whileInView="{ scaleY: 1 }"
+      :transition="{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.3 }" :inViewOptions="{ once: true }" />
+  </motion.div>
 
 
-  <div id="footer">
+  <motion.div id="footer" :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
+    :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }" :inViewOptions="{ once: true, amount: 0.2 }">
     <div class="footer-content">
 
       <main>
 
 
-        <img :src="Logo" alt="" class="logo">
+        <motion.img :src="Logo" alt="" class="logo" :initial="{ opacity: 0, scale: 0.8 }"
+          :whileInView="{ opacity: 1, scale: 1 }" :transition="{ duration: 0.5, ease: [0.23, 1, 0.32, 1], delay: 0.3 }"
+          :inViewOptions="{ once: true }" />
 
-        <div class="foot-box">
-          <div class="foot-head"> Quick Links</div>
+        <motion.div class="foot-box" :initial="{ opacity: 0, y: 20 }" :whileInView="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.4 }" :inViewOptions="{ once: true }">
+          <div class="foot-head">Quick Links</div>
           <NuxtLink to="/">
 
             <div class="foot-item">Home</div>
@@ -37,7 +45,7 @@
           </NuxtLink>
 
 
-        </div>
+        </motion.div>
       </main>
 
 
@@ -47,12 +55,13 @@
 
     </div>
     <img :src="FooterBorder" alt="" class="footer-border">
-  </div>
+  </motion.div>
 </template>
 
 <script setup>
 import Logo from "~/assets/logo.png";
 import FooterBorder from "~/assets/foot-border.svg";
+import { motion } from "motion-v";
 </script>
 
 
