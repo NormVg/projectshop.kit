@@ -3,45 +3,47 @@
     <div class="home">
 
 
-      <GoRound/>
+      <GoRound />
 
 
-    <div class="txtb">
-      <RevealText text="Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence." />
-      <!-- Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence. -->
-    </div>
+      <div class="txtb">
+        <RevealText
+          text="Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence." />
+        <!-- Get polished coding projects that strengthen your resume and GitHub. Turn routine university tasks into portfolio-worthy work you can showcase with confidence. -->
+      </div>
 
-    <div class="bat">
+      <div class="bat">
 
-    <!-- PROJECT KIT -->
-     <main>
+        <!-- PROJECT KIT -->
+        <main>
 
-       <TagFoot text="PROJECT KIT" />
-     </main>
+          <TagFoot text="PROJECT KIT" />
+        </main>
 
 
-    <span><TagFoot text="SHOP" :start-delay="500"/></span>
-  </div>
+        <span>
+          <TagFoot text="SHOP" :start-delay="500" />
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import "~/assets/main.css"
 import GoRound from "~/components/GoRound.vue";
 import Navbar from "~/components/Navbar.vue";
 </script>
 
 <style scoped>
-
-.body{
+.body {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 98vh;
 }
 
-.home{
+.home {
   border-radius: 25px;
   height: calc(100vh - 30px);
   width: calc(100vw - 30px);
@@ -53,7 +55,7 @@ import Navbar from "~/components/Navbar.vue";
 }
 
 
-.bat{
+.bat {
   font-size: 250px;
   width: max-content;
   display: flex;
@@ -66,18 +68,19 @@ import Navbar from "~/components/Navbar.vue";
   left: 10px;
   overflow: hidden;
 }
-.bat main{
-margin-bottom: -30px;
+
+.bat main {
+  margin-bottom: -30px;
 
 }
 
 
-.bat span{
+.bat span {
   margin-bottom: -50px;
   font-size: 125px;
 }
 
-.txtb{
+.txtb {
   width: 300px;
   padding-top: 20px;
   font-size: 17px;
@@ -95,9 +98,11 @@ margin-bottom: -30px;
   .bat {
     font-size: 180px !important;
   }
+
   .bat span {
     font-size: 90px !important;
   }
+
   .txtb {
     font-size: 14px;
     width: 250px;
@@ -108,9 +113,11 @@ margin-bottom: -30px;
   .bat {
     font-size: 120px !important;
   }
+
   .bat span {
     font-size: 60px !important;
   }
+
   .txtb {
     font-size: 12px;
     width: 200px;
@@ -121,15 +128,14 @@ margin-bottom: -30px;
   .bat {
     font-size: 80px !important;
   }
+
   .bat span {
     font-size: 40px !important;
   }
+
   .txtb {
     font-size: 10px;
     width: 150px;
   }
 }
 </style>
-
-
-

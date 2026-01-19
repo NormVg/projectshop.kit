@@ -10,35 +10,35 @@
   <div id="footer">
     <div class="footer-content">
 
-  <main>
+      <main>
 
 
-    <img :src="Logo" alt="" class="logo">
+        <img :src="Logo" alt="" class="logo">
 
-    <div class="foot-box">
-      <div class="foot-head"> Quick Links</div>
-      <NuxtLink to="/">
+        <div class="foot-box">
+          <div class="foot-head"> Quick Links</div>
+          <NuxtLink to="/">
 
-        <div class="foot-item">Home</div>
-      </NuxtLink>
+            <div class="foot-item">Home</div>
+          </NuxtLink>
 
-      <NuxtLink to="/#prog">
-        <div class="foot-item">Projects</div>
-      </NuxtLink>
-      <NuxtLink to="/#contact">
-        <div class="foot-item">Contacts</div>
-      </NuxtLink>
-      <NuxtLink to="/pricing">
-        <div class="foot-item">Pricing</div>
-      </NuxtLink>
+          <NuxtLink to="/#prog">
+            <div class="foot-item">Projects</div>
+          </NuxtLink>
+          <NuxtLink to="/#contact">
+            <div class="foot-item">Contacts</div>
+          </NuxtLink>
+          <NuxtLink to="/pricing">
+            <div class="foot-item">Pricing</div>
+          </NuxtLink>
 
-      <NuxtLink to="/policy">
-        <div class="foot-item">Policy</div>
-      </NuxtLink>
+          <NuxtLink to="/policy">
+            <div class="foot-item">Policy</div>
+          </NuxtLink>
 
 
-    </div>
-  </main>
+        </div>
+      </main>
 
 
 
@@ -50,7 +50,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import Logo from "~/assets/logo.png";
 import FooterBorder from "~/assets/foot-border.svg";
 </script>
@@ -60,9 +60,7 @@ import FooterBorder from "~/assets/foot-border.svg";
 
 
 <style scoped>
-
-
-.line-box{
+.line-box {
   width: 100%;
   height: 100%;
   display: flex;
@@ -90,6 +88,7 @@ import FooterBorder from "~/assets/foot-border.svg";
 .l2 {
   height: 350px;
 }
+
 .l3 {
   height: 250px;
 }
@@ -104,7 +103,7 @@ import FooterBorder from "~/assets/foot-border.svg";
   /* border: 1px solid salmon; */
   /* padding: 20px 0; */
   border-radius: 50px;
-  background-size:  cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
   margin: 0px auto;
@@ -148,17 +147,17 @@ main {
   /* padding-top: 20px; */
 }
 
- /* *{
+/* *{
   border: 1px solid salmon;
 } */
 
 .footer-border {
 
- width: 95%;
- margin-bottom: 0;
+  width: 95%;
+  margin-bottom: 0;
 }
 
-.foot-box{
+.foot-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -167,14 +166,14 @@ main {
   /* border: 1px solid salmon; */
 }
 
-.foot-head{
+.foot-head {
   font-weight: bold;
   font-size: 25px;
   margin-bottom: 10px;
 }
 
 
-.foot-item{
+.foot-item {
   font-size: 18px;
   cursor: pointer;
   border-bottom: 1px solid transparent;
@@ -182,11 +181,11 @@ main {
   color: var(--c2);
 }
 
-.foot-item:hover{
-border-bottom: 1px solid var(--c1);
+.foot-item:hover {
+  border-bottom: 1px solid var(--c1);
 }
 
-.logo{
+.logo {
   width: 75px;
   /* margin-top: 30px;
   margin-bottom: 10px; */

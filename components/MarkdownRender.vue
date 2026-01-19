@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script setup>
 import { renderMarkdown } from '~/utils/renderMarkdown'
 import "~/assets/markdown.css"
 
 const props = defineProps({
-  md:{
-    type:String,
-    default:`
+  md: {
+    type: String,
+    default: `
 
 
 ### Project Title: **Task Manager Web App**
@@ -58,16 +58,15 @@ const html = computed(() => renderMarkdown(props.md))
 </script>
 
 <template>
-    <span class="markdown-content">
+  <span class="markdown-content">
 
-      <div class="prose max-w-none" v-html="html" />
+    <div class="prose max-w-none" v-html="html" />
   </span>
 </template>
 
 
 
 <style>
-
 .markdown-content {
   font-weight: 400;
   font-style: normal;
@@ -76,21 +75,22 @@ const html = computed(() => renderMarkdown(props.md))
   user-select: text;
 }
 
-.markdown-content h1{
+.markdown-content h1 {
   font-family: var(--font-head);
 }
 
 
-.markdown-content h2{
+.markdown-content h2 {
   font-family: var(--font-head);
 }
 
 
-.markdown-content h3{
+.markdown-content h3 {
   font-family: var(--font-head);
-  color:var(--red)
+  color: var(--red)
 }
-.markdown-content p{
+
+.markdown-content p {
   white-space: pre-line;
 }
 </style>

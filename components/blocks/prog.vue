@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import leftBtn from "~/assets/leftbtn.png"
 import rightBtn from "~/assets/rightbtn.png"
 import MyBtn from "../MyBtn.vue"
@@ -68,13 +68,13 @@ const activeIndex = ref(0)
 
 const activeCards = computed(() => {
   const result = [];
-    for (let i = -1; i <= 1; i++) {
-      let index = (activeIndex.value + i + cards.value.length) % cards.value.length;
-      result.push(cards.value[index]);
-    }
-    console.log(result);
+  for (let i = -1; i <= 1; i++) {
+    let index = (activeIndex.value + i + cards.value.length) % cards.value.length;
+    result.push(cards.value[index]);
+  }
+  console.log(result);
 
-    return result;
+  return result;
 });
 
 
@@ -120,8 +120,7 @@ const prevCard = () => {
 </script>
 
 <style scoped>
-
-.box-console{
+.box-console {
   width: 100%;
   height: 20%;
   display: flex;
@@ -135,7 +134,7 @@ const prevCard = () => {
   /* border: 1px solid salmon; */
 }
 
-.console-head{
+.console-head {
   font-size: 75px;
   font-weight: 600;
   color: whitesmoke;
@@ -143,13 +142,13 @@ const prevCard = () => {
 
 }
 
-.console-sub{
+.console-sub {
   font-size: 20px;
   color: var(--c2);
   margin-bottom: 15px;
 }
 
-.console-btn{
+.console-btn {
   width: 300px;
 
   /* Isolate from parent filters to maintain true white */
@@ -160,7 +159,8 @@ const prevCard = () => {
 }
 
 
-.btn-left img, .btn-right img{
+.btn-left img,
+.btn-right img {
   width: 60px;
   height: 60px;
   object-fit: contain;
@@ -184,7 +184,7 @@ const prevCard = () => {
   transition: filter 0.1s, transform 0.1s;
 }
 
-.box-cen{
+.box-cen {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -195,7 +195,7 @@ const prevCard = () => {
 
 }
 
-.list-box{
+.list-box {
   height: 100%;
   width: 100%;
   display: flex;
@@ -204,8 +204,8 @@ const prevCard = () => {
   gap: 20px;
 }
 
-.list-item{
-  background-color: var(--bg2) ;
+.list-item {
+  background-color: var(--bg2);
   aspect-ratio: 400/550;
   height: 70%;
   border-radius: 15px;
@@ -242,11 +242,13 @@ const prevCard = () => {
     filter: blur(0px);
     transform: translateY(0);
   }
+
   50% {
     opacity: 0.2;
     filter: blur(3px);
     transform: translateY(-5px);
   }
+
   100% {
     opacity: 1;
     filter: blur(0px);
@@ -261,11 +263,13 @@ const prevCard = () => {
     filter: blur(0px);
     transform: translateX(0);
   }
+
   50% {
     opacity: 0.3;
     filter: blur(2px);
     transform: translateX(-15px);
   }
+
   100% {
     opacity: 1;
     filter: blur(0px);
@@ -280,11 +284,13 @@ const prevCard = () => {
     filter: blur(0px);
     transform: scale(1);
   }
+
   50% {
     opacity: 0.4;
     filter: blur(2.5px);
     transform: scale(0.95);
   }
+
   100% {
     opacity: 1;
     filter: blur(0px);
@@ -297,19 +303,23 @@ const prevCard = () => {
     filter: blur(0px) brightness(1);
     opacity: 1;
   }
+
   25% {
     filter: blur(8px) brightness(0.3);
     opacity: 0.6;
   }
+
   50% {
     filter: blur(12px) brightness(0.1);
     opacity: 0.3;
     transform: scale(0.95);
   }
+
   75% {
     filter: blur(8px) brightness(0.3);
     opacity: 0.6;
   }
+
   100% {
     filter: blur(0px) brightness(1);
     opacity: 1;
@@ -317,16 +327,16 @@ const prevCard = () => {
 }
 
 
-.list-item.l1{
+.list-item.l1 {
   scale: 0.85;
 
 }
 
-.list-item.l2{
+.list-item.l2 {
   height: 70%;
 }
 
-.list-item.l3{
+.list-item.l3 {
   scale: 0.85;
 }
 
@@ -376,28 +386,59 @@ const prevCard = () => {
   animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-.initial-load .progbox { animation-delay: 0.1s; }
-.initial-load .btn-left { animation-delay: 0.2s; }
-.initial-load .btn-right { animation-delay: 0.2s; }
-.initial-load .box-cen { animation-delay: 0.25s; }
-.initial-load .list-item.l1 { animation-delay: 0.3s; }
-.initial-load .list-item.l2 { animation-delay: 0.35s; }
-.initial-load .list-item.l3 { animation-delay: 0.4s; }
-.initial-load .box-console { animation-delay: 0.45s; }
-.initial-load .console-head { animation-delay: 0.5s; }
-.initial-load .console-sub { animation-delay: 0.55s; }
-.initial-load .console-btn { animation-delay: 0.6s; }
+.initial-load .progbox {
+  animation-delay: 0.1s;
+}
+
+.initial-load .btn-left {
+  animation-delay: 0.2s;
+}
+
+.initial-load .btn-right {
+  animation-delay: 0.2s;
+}
+
+.initial-load .box-cen {
+  animation-delay: 0.25s;
+}
+
+.initial-load .list-item.l1 {
+  animation-delay: 0.3s;
+}
+
+.initial-load .list-item.l2 {
+  animation-delay: 0.35s;
+}
+
+.initial-load .list-item.l3 {
+  animation-delay: 0.4s;
+}
+
+.initial-load .box-console {
+  animation-delay: 0.45s;
+}
+
+.initial-load .console-head {
+  animation-delay: 0.5s;
+}
+
+.initial-load .console-sub {
+  animation-delay: 0.55s;
+}
+
+.initial-load .console-btn {
+  animation-delay: 0.6s;
+}
 
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(40px) scale(0.98);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 </style>
-
-

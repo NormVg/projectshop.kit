@@ -2,52 +2,50 @@
   <div id="contact">
 
 
-  <img :src="HBallMesh" alt="" class="hballmesh" />
+    <img :src="HBallMesh" alt="" class="hballmesh" />
 
 
-<div class="contact-form">
-  <div class="contact-form__title">
+    <div class="contact-form">
+      <div class="contact-form__title">
 
-    <RevealText text="Leave a application, we will contact you soon" />
-</div>
+        <RevealText text="Leave a application, we will contact you soon" />
+      </div>
 
-  <div class="contact-form__field cf1">
-    <div class="contact-form__label"> Name</div>
-    <input type="text" class="contact-form__input">
-  </div>
+      <div class="contact-form__field cf1">
+        <div class="contact-form__label"> Name</div>
+        <input type="text" class="contact-form__input">
+      </div>
 
-  <div class="contact-form__field cf2">
-    <div class="contact-form__label">Email</div>
-    <input type="text" class="contact-form__input">
-  </div>
+      <div class="contact-form__field cf2">
+        <div class="contact-form__label">Email</div>
+        <input type="text" class="contact-form__input">
+      </div>
 
-  <div class="contact-form__field cf3">
-    <div class="contact-form__label">Message</div>
-    <input type="text" class="contact-form__input">
-  </div>
+      <div class="contact-form__field cf3">
+        <div class="contact-form__label">Message</div>
+        <input type="text" class="contact-form__input">
+      </div>
 
-  <MyBtn text="Submit" class="contact-form__submit" />
-</div>
+      <MyBtn text="Submit" class="contact-form__submit" />
+    </div>
 
 
-  <div class="bat">
+    <div class="bat">
       <TagFoot text="Work with us" />
       <!-- CONTACT -->
     </div>
 
 
-</div>
+  </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import HBallMesh from "~/assets/hballMesh.png";
 import MyBtn from "../MyBtn.vue";
 import RevealText from "../RevealText.vue";
 </script>
 
 <style scoped>
-
-
 .contact-form {
   position: absolute;
   top: 80px;
@@ -113,6 +111,7 @@ import RevealText from "../RevealText.vue";
   color: #fff;
   margin-bottom: 1px;
 }
+
 .contact-form__input {
   border: none;
   border-bottom: 2px solid #fff;
@@ -139,11 +138,11 @@ import RevealText from "../RevealText.vue";
 .contact-form__submit {
   margin-top: 18px;
 
-width: 200px;
-margin-left: 0px;
+  width: 200px;
+  margin-left: 0px;
 }
 
-#contact{
+#contact {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,7 +160,7 @@ margin-left: 0px;
   z-index: -1;
   width: 70%;
   margin: 20px
-  /* max-width: 400px; */
+    /* max-width: 400px; */
 }
 
 

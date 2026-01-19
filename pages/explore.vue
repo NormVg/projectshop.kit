@@ -23,7 +23,7 @@
 
 
           <div class="exp-body">
-            <MarkdownRender/>
+            <MarkdownRender />
             <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum error nostrum, assumenda aliquid laudantium nulla quis sequi cupiditate, ducimus distinctio accusamus architecto suscipit placeat aut et inventore, ut magnam animi! -->
 
             <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur impedit, eos praesentium totam repudiandae omnis corporis ratione, quae ipsam atque nemo enim porro? Odit vitae corporis eveniet voluptatibus vero? -->
@@ -33,11 +33,11 @@
 
     </div>
 
-    <Footer/>
+    <Footer />
   </section>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import BallMesh from "~/assets/exp-ball-mesh.svg"
 import Footer from "~/components/blocks/footer.vue";
 import MarkdownRender from "~/components/MarkdownRender.vue";
@@ -65,6 +65,7 @@ import Navbar from "~/components/Navbar.vue";
   font-weight: 600;
   margin-bottom: 20px;
 }
+
 .exp-sub {
   font-size: 1.5rem;
   font-weight: 500;
@@ -73,12 +74,12 @@ import Navbar from "~/components/Navbar.vue";
   opacity: .8;
 }
 
-.exp-btn{
+.exp-btn {
   width: 300px;
   margin-left: -30px;
 }
 
-.exp-body{
+.exp-body {
   margin-top: 50px;
   opacity: .7;
 }
@@ -115,7 +116,7 @@ import Navbar from "~/components/Navbar.vue";
 .exp-box {
   width: 100%;
   /* height: 400vh; */
-/* border: 1px solid salmon; */
+  /* border: 1px solid salmon; */
 
 }
 
@@ -126,6 +127,7 @@ import Navbar from "~/components/Navbar.vue";
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -136,6 +138,7 @@ import Navbar from "~/components/Navbar.vue";
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

@@ -1,11 +1,11 @@
 <template>
-        <div class="pc-btn">
-          <RevealText :text="props.text" />
-        <!-- Get <i>STARTED</i> -->
-        </div>
+  <div class="pc-btn">
+    <RevealText :text="props.text" />
+    <!-- Get <i>STARTED</i> -->
+  </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 
 const props = defineProps({
   text: {
@@ -16,7 +16,6 @@ const props = defineProps({
 </script>
 
 <style scoped>
-
 .pc-btn {
   background-image: url("~/assets/btnBG.png");
   /* background-size: ; */
@@ -32,7 +31,7 @@ const props = defineProps({
   cursor: pointer;
   transition: all 0.4s;
   margin-top: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   width: 80%;
   margin: 0 auto;
   font-family: var(--font1);
@@ -42,14 +41,14 @@ const props = defineProps({
 
 .pc-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
   border-color: var(--c1);
   filter: brightness(1.1);
 }
 
 .pc-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: all 0.1s;
 }
 
@@ -62,12 +61,12 @@ const props = defineProps({
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .pc-btn:disabled:hover {
   transform: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   filter: none;
 }
 
@@ -76,5 +75,4 @@ const props = defineProps({
     transition: none;
   }
 }
-
 </style>

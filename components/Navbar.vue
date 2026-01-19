@@ -6,13 +6,13 @@
     </NuxtLink>
 
 
-      <NuxtLink to="/#prog">
-        <div class="nav">Projects</div>
-      </NuxtLink>
+    <NuxtLink to="/#prog">
+      <div class="nav">Projects</div>
+    </NuxtLink>
 
-      <NuxtLink to="/#contact">
-        <div class="nav">Contacts</div>
-      </NuxtLink>
+    <NuxtLink to="/#contact">
+      <div class="nav">Contacts</div>
+    </NuxtLink>
 
 
     <NuxtLink to="/pricing">
@@ -27,12 +27,12 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 
 </script>
 
 <style scoped>
-.nav-bar{
+.nav-bar {
   position: fixed;
   display: flex;
   justify-content: flex-start;
@@ -43,14 +43,14 @@
   z-index: 100;
 }
 
-.nav{
+.nav {
   font-size: 22px;
   border-bottom: 2px solid transparent;
   transition: var(--tra200);
 
 }
 
-.nav:hover{
+.nav:hover {
   border-bottom: 2px solid var(--c1);
 
 }

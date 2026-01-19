@@ -23,46 +23,66 @@
 
 
     <main>
-      <div class="ncard pcard" >
+      <div class="ncard pcard">
 
         <div class="pc-head">Starter Pack</div>
-        <div class="pc-sub"><RevealText text="Best for small projects and getting started" /></div>
+        <div class="pc-sub">
+          <RevealText text="Best for small projects and getting started" />
+        </div>
         <div class="pc-cash">12$ <span>/ project</span></div>
         <div class="pc-box">
-          <div class="pcb"> <span>◆</span> <RevealText text="Ready-to-use coding projects" /></div>
-          <div class="pcb"> <span>◆</span> <RevealText text="Includes documentation and source code" /></div>
-          <div class="pcb"> <span>◆</span> <RevealText text="Perfect for resume and GitHub" /></div>
-          <div class="pcb"> <span>◆</span> <RevealText text="Great for resume and GitHub showcase" /></div>
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="Ready-to-use coding projects" />
+          </div>
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="Includes documentation and source code" />
+          </div>
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="Perfect for resume and GitHub" />
+          </div>
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="Great for resume and GitHub showcase" />
+          </div>
         </div>
 
 
-          <MyBtn text="Get <i>STARTED</i>" />
+        <MyBtn text="Get <i>STARTED</i>" />
 
 
       </div>
 
       <div class="ccard pcard">
-      <div class="pc-head">Custom Plan</div>
-      <div class="pc-sub"><RevealText text="Best for innovative and freelance projects" /></div>
-      <div class="pc-cash">$$$ <span>/ project</span></div>
-      <div class="pc-box">
-        <div class="pcb"> <span>◆</span> <RevealText text="Tailored projects based on your needs" /></div>
-        <div class="pcb"> <span>◆</span> <RevealText text="Extra features and deployment support" /></div>
-        <div class="pcb"> <span>◆</span> <RevealText text="One-on-one guidance available" /></div>
-        <div class="pcb"> <span>◆</span> <RevealText text="Priority delivery timeline" /></div>
-      </div>
-      <!-- <div class="pc-btn">
+        <div class="pc-head">Custom Plan</div>
+        <div class="pc-sub">
+          <RevealText text="Best for innovative and freelance projects" />
+        </div>
+        <div class="pc-cash">$$$ <span>/ project</span></div>
+        <div class="pc-box">
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="Tailored projects based on your needs" />
+          </div>
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="Extra features and deployment support" />
+          </div>
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="One-on-one guidance available" />
+          </div>
+          <div class="pcb"> <span>◆</span>
+            <RevealText text="Priority delivery timeline" />
+          </div>
+        </div>
+        <!-- <div class="pc-btn">
           <RevealText text="CONNECT" />
       </div> -->
 
-      <MyBtn text="CONNECT" />
+        <MyBtn text="CONNECT" />
 
       </div>
     </main>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 
 
 // const container = ref(null);
@@ -93,7 +113,9 @@ import ballMesh from "~/assets/ballMesh.svg";
 }
 
 
-.lbl1, .lbl2, .lbl3 {
+.lbl1,
+.lbl2,
+.lbl3 {
   width: 2px;
   height: 100px;
   background: var(--c1);
@@ -109,6 +131,7 @@ import ballMesh from "~/assets/ballMesh.svg";
 .lbl2 {
   height: 300px;
 }
+
 .lbl3 {
   height: 250px;
 }
@@ -131,7 +154,9 @@ import ballMesh from "~/assets/ballMesh.svg";
   z-index: -1;
 }
 
-.lbr1, .lbr2, .lbr3 {
+.lbr1,
+.lbr2,
+.lbr3 {
   width: 2px;
   height: 100px;
   background: var(--c1);
@@ -145,42 +170,52 @@ import ballMesh from "~/assets/ballMesh.svg";
     box-shadow: 0 0 8px var(--c1), 0 0 4px #fff;
     opacity: 1;
   }
+
   10% {
     box-shadow: 0 0 2px var(--c1), 0 0 1px #fff;
     opacity: 0.3;
   }
+
   15% {
     box-shadow: 0 0 20px var(--c1), 0 0 25px #fff;
     opacity: 0.9;
   }
+
   25% {
     box-shadow: 0 0 5px var(--c1), 0 0 2px #fff;
     opacity: 0.4;
   }
+
   30% {
     box-shadow: 0 0 25px var(--c1), 0 0 35px #fff;
     opacity: 1;
   }
+
   45% {
     box-shadow: 0 0 3px var(--c1), 0 0 1px #fff;
     opacity: 0.2;
   }
+
   50% {
     box-shadow: 0 0 18px var(--c1), 0 0 22px #fff;
     opacity: 0.8;
   }
+
   65% {
     box-shadow: 0 0 6px var(--c1), 0 0 3px #fff;
     opacity: 0.5;
   }
+
   70% {
     box-shadow: 0 0 30px var(--c1), 0 0 40px #fff;
     opacity: 1;
   }
+
   85% {
     box-shadow: 0 0 4px var(--c1), 0 0 2px #fff;
     opacity: 0.3;
   }
+
   100% {
     box-shadow: 0 0 15px var(--c1), 0 0 18px #fff;
     opacity: 0.7;
@@ -196,6 +231,7 @@ import ballMesh from "~/assets/ballMesh.svg";
 .lbr2 {
   height: 300px;
 }
+
 .lbr3 {
   height: 250px;
 }
@@ -280,7 +316,7 @@ import ballMesh from "~/assets/ballMesh.svg";
   cursor: pointer;
   transition: all 0.4s;
   margin-top: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   width: 80%;
   margin: 0 auto;
   font-family: var(--font1);
@@ -306,6 +342,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .pcard {
   aspect-ratio: 450/600;
   height: 460px;
@@ -357,6 +394,7 @@ main {
   margin-bottom: -50px;
   z-index: -1;
 }
+
 .box {
   position: relative;
   min-height: 97vh;

@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import goRoundImg from "~/assets/goround.svg"
 import arrowImg from "~/assets/arrow.svg"
 
@@ -17,8 +17,10 @@ import Logo from "~/assets/logo.png"
 <style scoped>
 .container {
   position: absolute;
-  width: 150px; /* Set a fixed width for better stacking */
-  height: 150px; /* Set a fixed height for better stacking */
+  width: 150px;
+  /* Set a fixed width for better stacking */
+  height: 150px;
+  /* Set a fixed height for better stacking */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,19 +29,19 @@ import Logo from "~/assets/logo.png"
   scale: .8;
 }
 
-.arrow{
+.arrow {
   scale: 0;
   z-index: 2;
-    width: 85px;
+  width: 85px;
   height: 85px;
   transition: var(--tra200);
 }
 
-.container:hover .arrow{
+.container:hover .arrow {
   scale: 1;
 }
 
-.container:hover .logoi{
+.container:hover .logoi {
   scale: 0;
 }
 
@@ -67,7 +69,7 @@ import Logo from "~/assets/logo.png"
   border-radius: 50%;
   transition: var(--tra200);
 
-  box-shadow: 0 8px 24px 0 rgba(0,0,0,0.85), 0 1.5px 6px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.85), 0 1.5px 6px 0 rgba(0, 0, 0, 0.5);
 }
 
 @keyframes rotate {
