@@ -89,6 +89,8 @@ onUnmounted(() => {
   width: 100%;
   /* overflow: hidden; */
   height: max-content;
+  font-size: inherit;
+  align-self: flex-end;
 }
 
 .ml16 .word {

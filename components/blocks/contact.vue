@@ -3,9 +3,8 @@
     :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }" :inViewOptions="{ once: true, amount: 0.2 }">
 
 
-    <motion.img :src="HBallMesh" alt="" class="hballmesh" :initial="{ opacity: 0, scale: 0.9 }"
-      :whileInView="{ opacity: 1, scale: 1 }" :transition="{ duration: 1, ease: [0.23, 1, 0.32, 1] }"
-      :inViewOptions="{ once: true, amount: 0.2 }" />
+    <motion.img :src="HBallMesh" alt="" class="hballmesh" :initial="{ opacity: 0 }" :whileInView="{ opacity: 1 }"
+      :transition="{ duration: 1, ease: [0.23, 1, 0.32, 1] }" :inViewOptions="{ once: true, amount: 0.2 }" />
 
 
     <div class="contact-form">

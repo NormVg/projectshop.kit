@@ -11,14 +11,14 @@
         <div class="exp-box">
 
           <div class="exp-head">
-            Portfolio Boomer
+            {{ selectedProject.name }}
           </div>
 
-          <div class="exp-sub">One of the best selling prog type</div>
+          <div class="exp-sub">{{ selectedProject.sub }}</div>
 
           <div class="exp-btn">
 
-            <MyBtn text="$19" />
+            <MyBtn :text="selectedProject.tag" />
           </div>
 
 
@@ -43,6 +43,38 @@ import Footer from "~/components/blocks/footer.vue";
 import MarkdownRender from "~/components/MarkdownRender.vue";
 import MyBtn from "~/components/MyBtn.vue";
 import Navbar from "~/components/Navbar.vue";
+
+// Project data (same as in prog.vue)
+const projects = [
+  { name: "Portfolio Boomer", id: "cardID-1", sub: "One of the best selling prog type", tag: "$19" },
+  { name: "Growth Rocket", id: "cardID-2", sub: "High growth potential", tag: "$25" },
+  { name: "Steady Stream", id: "cardID-3", sub: "Consistent returns", tag: "$15" },
+  { name: "Tech Titan", id: "cardID-4", sub: "Tech-focused portfolio", tag: "$22" },
+  { name: "Value Vault", id: "cardID-5", sub: "Value investing picks", tag: "$18" },
+  { name: "Dividend Dynamo", id: "cardID-6", sub: "Dividend heavy", tag: "$20" },
+  { name: "Global Explorer", id: "cardID-7", sub: "International exposure", tag: "$24" },
+  { name: "Green Future", id: "cardID-8", sub: "Sustainable investments", tag: "$21" },
+  { name: "Small Cap Surge", id: "cardID-9", sub: "Small cap focus", tag: "$17" },
+  { name: "Blue Chip Bundle", id: "cardID-10", sub: "Blue chip stocks", tag: "$23" },
+  { name: "Innovation Index", id: "cardID-11", sub: "Innovative companies", tag: "$26" },
+  { name: "Balanced Basket", id: "cardID-12", sub: "Balanced allocation", tag: "$19" },
+  { name: "Emerging Edge", id: "cardID-13", sub: "Emerging markets", tag: "$22" },
+  { name: "Safe Harbor", id: "cardID-14", sub: "Low risk picks", tag: "$16" },
+  { name: "Crypto Craze", id: "cardID-15", sub: "Crypto assets", tag: "$30" },
+  { name: "Healthcare Hero", id: "cardID-16", sub: "Healthcare sector", tag: "$20" },
+  { name: "REIT Riches", id: "cardID-17", sub: "Real estate investments", tag: "$18" },
+  { name: "AI Advantage", id: "cardID-18", sub: "AI-focused stocks", tag: "$27" },
+  { name: "Millennial Mix", id: "cardID-19", sub: "Millennial trends", tag: "$21" }
+];
+
+// Get project ID from query params
+const route = useRoute();
+const projectId = computed(() => route.query.project || 'cardID-1');
+
+// Find the selected project based on the query param
+const selectedProject = computed(() => {
+  return projects.find(p => p.id === projectId.value) || projects[0];
+});
 </script>
 
 <style scoped>

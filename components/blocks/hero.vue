@@ -16,19 +16,19 @@
 
       <div class="bat">
 
-        <!-- PROJECT KIT -->
+        <!-- PROJECTKIT.SHOP -->
         <motion.main :initial="{ opacity: 0, y: 60 }" :whileInView="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }"
           :inViewOptions="{ once: true, amount: 0.3 }">
 
-          <TagFoot text="PROJECT KIT" />
+          <TagFoot text="PROJECTKIT" />
         </motion.main>
 
 
         <motion.span :initial="{ opacity: 0, y: 60 }" :whileInView="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.4 }"
           :inViewOptions="{ once: true, amount: 0.3 }">
-          <TagFoot text="SHOP" :start-delay="500" />
+          <TagFoot text=".SHOP" :start-delay="400" />
         </motion.span>
       </div>
     </div>
@@ -39,6 +39,7 @@
 import "~/assets/main.css"
 import GoRound from "~/components/GoRound.vue";
 import Navbar from "~/components/Navbar.vue";
+import { motion } from "motion-v";
 </script>
 
 <style scoped>
@@ -76,14 +77,14 @@ import Navbar from "~/components/Navbar.vue";
 }
 
 .bat main {
-  margin-bottom: -30px;
-
+  /* No margin-bottom so .SHOP aligns to the baseline */
 }
 
 
 .bat span {
-  margin-bottom: -50px;
+  margin-bottom: -30px;
   font-size: 125px;
+  align-self: flex-end;
 }
 
 .txtb {

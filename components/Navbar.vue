@@ -10,6 +10,10 @@
       <div class="nav">Projects</div>
     </NuxtLink>
 
+    <NuxtLink to="/marketplace">
+      <div class="nav">Marketplace</div>
+    </NuxtLink>
+
     <NuxtLink to="/#contact">
       <div class="nav">Contacts</div>
     </NuxtLink>

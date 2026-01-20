@@ -43,7 +43,7 @@
           </motion.div>
           <motion.div :initial="{ opacity: 0, scale: 0.95 }" :whileInView="{ opacity: 1, scale: 1 }"
             :transition="{ duration: 0.5, delay: 0.6 }" :inViewOptions="{ once: true }" class="console-btn"
-            :class="{ 'blur': cardBlur }">
+            :class="{ 'blur': cardBlur }" @click="goToProject">
             <MyBtn :text="activeCards[1].tag" />
           </motion.div>
         </motion.div>
@@ -141,7 +141,10 @@ const prevCard = () => {
   }, 1000);
 }
 
-// console.log(activeCards.value);
+const goToProject = () => {
+  const project = activeCards.value[1];
+  navigateTo(`/explore?project=${project.id}`);
+}
 
 
 </script>

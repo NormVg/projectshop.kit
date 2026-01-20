@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @click="goToExplore">
     <img :src="goRoundImg" alt="as" class="gori">
     <img :src="Logo" alt="logo" class="logoi">
     <img :src="arrowImg" alt="logo" class="arrow">
@@ -10,8 +10,11 @@
 <script setup>
 import goRoundImg from "~/assets/goround.svg"
 import arrowImg from "~/assets/arrow.svg"
-
 import Logo from "~/assets/logo.png"
+
+const goToExplore = () => {
+  navigateTo('/explore')
+}
 </script>
 
 <style scoped>
