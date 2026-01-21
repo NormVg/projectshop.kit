@@ -10,5 +10,10 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ["@vueuse/nuxt", "motion-v/nuxt"]
+  modules: ["@vueuse/nuxt", "motion-v/nuxt", "@nuxtjs/supabase"],
+
+  supabase: {
+    redirect: false,
+  },
 })
+

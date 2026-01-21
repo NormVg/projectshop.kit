@@ -47,7 +47,8 @@
       <div v-for="(project, index) in filteredProjects" :key="project.id" class="project-card"
         :style="{ animationDelay: `${(index % 6) * 0.1}s` }" @click="goToProject(project.id)">
 
-        <div class="card-thumb">
+        <div class="card-thumb" :class="{ 'has-image': project.thumbnail_url }">
+          <img v-if="project.thumbnail_url" :src="project.thumbnail_url" class="thumb-img" alt="" />
           <div class="card-badge" v-if="project.badge">{{ project.badge }}</div>
         </div>
 
@@ -99,46 +100,56 @@ import TagFoot from "~/components/TagFoot.vue";
 import RevealText from "~/components/RevealText.vue";
 
 const activeFilter = ref('all');
+const { getAllProjects, getFeaturedProjects, getBudgetProjects, getProjectsByBadge } = useProjects();
 
-// Project data with categories and badges
-const projects = ref([
-  { name: "Portfolio Boomer", id: "cardID-1", sub: "One of the best selling prog type", tag: "$19", category: "Web", badge: "Bestseller" },
-  { name: "Growth Rocket", id: "cardID-2", sub: "High growth potential", tag: "$25", category: "Mobile", badge: "Popular" },
-  { name: "Steady Stream", id: "cardID-3", sub: "Consistent returns", tag: "$15", category: "API", badge: "" },
-  { name: "Tech Titan", id: "cardID-4", sub: "Tech-focused portfolio", tag: "$22", category: "Full Stack", badge: "New" },
-  { name: "Value Vault", id: "cardID-5", sub: "Value investing picks", tag: "$18", category: "Backend", badge: "" },
-  { name: "Dividend Dynamo", id: "cardID-6", sub: "Dividend heavy", tag: "$20", category: "Web", badge: "" },
-  { name: "Global Explorer", id: "cardID-7", sub: "International exposure", tag: "$24", category: "Mobile", badge: "Popular" },
-  { name: "Green Future", id: "cardID-8", sub: "Sustainable investments", tag: "$21", category: "Full Stack", badge: "New" },
-  { name: "Small Cap Surge", id: "cardID-9", sub: "Small cap focus", tag: "$17", category: "API", badge: "" },
-  { name: "Blue Chip Bundle", id: "cardID-10", sub: "Blue chip stocks", tag: "$23", category: "Web", badge: "" },
-  { name: "Innovation Index", id: "cardID-11", sub: "Innovative companies", tag: "$26", category: "AI/ML", badge: "Hot" },
-  { name: "Balanced Basket", id: "cardID-12", sub: "Balanced allocation", tag: "$19", category: "Full Stack", badge: "" },
-  { name: "Emerging Edge", id: "cardID-13", sub: "Emerging markets", tag: "$22", category: "Mobile", badge: "" },
-  { name: "Safe Harbor", id: "cardID-14", sub: "Low risk picks", tag: "$16", category: "Backend", badge: "" },
-  { name: "Crypto Craze", id: "cardID-15", sub: "Crypto assets", tag: "$30", category: "Blockchain", badge: "New" },
-  { name: "Healthcare Hero", id: "cardID-16", sub: "Healthcare sector", tag: "$20", category: "Web", badge: "" },
-  { name: "REIT Riches", id: "cardID-17", sub: "Real estate investments", tag: "$18", category: "Full Stack", badge: "" },
-  { name: "AI Advantage", id: "cardID-18", sub: "AI-focused stocks", tag: "$27", category: "AI/ML", badge: "Hot" },
-  { name: "Millennial Mix", id: "cardID-19", sub: "Millennial trends", tag: "$21", category: "Web", badge: "" }
-]);
+// Fetch all projects from Supabase
+const { data: projects, pending, error } = await useAsyncData('projects', async () => {
+  try {
+    const data = await getAllProjects();
+    // Transform data to match template expectations
+    return data.map(p => ({
+      ...p,
+      sub: p.description,
+      tag: `₹${Math.round(p.price / 100)}`, // Convert cents to rupees display
+    }));
+  } catch (e) {
+    console.error('Failed to fetch projects:', e);
+    // Return fallback static data if Supabase is not configured
+    return [
+      { id: "1", name: "Portfolio Boomer", slug: "portfolio-boomer", description: "One of the best selling prog type", sub: "One of the best selling prog type", tag: "$19", price: 1900, category: "Web", badge: "Bestseller" },
+      { id: "2", name: "Growth Rocket", slug: "growth-rocket", description: "High growth potential", sub: "High growth potential", tag: "$25", price: 2500, category: "Mobile", badge: "Popular" },
+      { id: "3", name: "Steady Stream", slug: "steady-stream", description: "Consistent returns", sub: "Consistent returns", tag: "$15", price: 1500, category: "API", badge: "" },
+      { id: "4", name: "Tech Titan", slug: "tech-titan", description: "Tech-focused portfolio", sub: "Tech-focused portfolio", tag: "$22", price: 2200, category: "Full Stack", badge: "New" },
+      { id: "5", name: "AI Advantage", slug: "ai-advantage", description: "AI-focused stocks", sub: "AI-focused stocks", tag: "$27", price: 2700, category: "AI/ML", badge: "Hot" },
+      { id: "6", name: "Crypto Craze", slug: "crypto-craze", description: "Crypto assets", sub: "Crypto assets", tag: "$30", price: 3000, category: "Blockchain", badge: "New" },
+    ];
+  }
+});
 
-// Filter logic
+// Filter logic - works with both database and fallback data
 const filteredProjects = computed(() => {
+  if (!projects.value) return [];
+
   switch (activeFilter.value) {
     case 'popular':
       return projects.value.filter(p => p.badge === 'Bestseller' || p.badge === 'Popular' || p.badge === 'Hot');
     case 'new':
       return projects.value.filter(p => p.badge === 'New');
     case 'budget':
-      return projects.value.filter(p => parseInt(p.tag.replace('$', '')) <= 18);
+      return projects.value.filter(p => p.price <= 1800); // $18 or less
     default:
       return projects.value;
   }
 });
 
 const goToProject = (id) => {
-  navigateTo(`/explore?project=${id}`);
+  // Find the project to get its slug
+  const project = projects.value?.find(p => p.id === id);
+  if (project?.slug) {
+    navigateTo(`/explore/${project.slug}`);
+  } else {
+    navigateTo(`/explore?project=${id}`);
+  }
 };
 </script>
 
@@ -349,6 +360,22 @@ const goToProject = (id) => {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.card-thumb.has-image::before {
+  display: none;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .thumb-img {
+  transform: scale(1.1);
 }
 
 .card-thumb::before {

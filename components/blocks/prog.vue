@@ -13,18 +13,21 @@
         <div class="list-box">
           <motion.div :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.3 }"
-            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l1" :class="{ 'blur': cardBlur }">
-            {{ activeCards[0].name }}
+            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l1" :class="{ 'blur': cardBlur }"
+            :style="activeCards[0].thumbnail_url ? { backgroundImage: `linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8)), url(${activeCards[0].thumbnail_url})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
+            <!-- <span v-if="!activeCards[0].thumbnail_url || true" class="card-text">{{ activeCards[0].name }}</span> -->
           </motion.div>
           <motion.div :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.35 }"
-            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l2" :class="{ 'blur': cardBlur }">
-            {{ activeCards[1].name }}
+            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l2" :class="{ 'blur': cardBlur }"
+            :style="activeCards[1].thumbnail_url ? { backgroundImage: `linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8)), url(${activeCards[1].thumbnail_url})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
+            <!-- <span v-if="!activeCards[1].thumbnail_url || true" class="card-text">{{ activeCards[1].name }}</span> -->
           </motion.div>
           <motion.div :initial="{ opacity: 0, y: 40 }" :whileInView="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: 0.4 }"
-            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l3" :class="{ 'blur': cardBlur }">
-            {{ activeCards[2].name }}
+            :inViewOptions="{ once: true, amount: 0.9 }" class="list-item l3" :class="{ 'blur': cardBlur }"
+            :style="activeCards[2].thumbnail_url ? { backgroundImage: `linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8)), url(${activeCards[2].thumbnail_url})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
+            <!-- <span v-if="!activeCards[2].thumbnail_url || true" class="card-text">{{ activeCards[2].name }}</span> -->
           </motion.div>
         </div>
 
@@ -64,27 +67,38 @@ import rightBtn from "~/assets/rightbtn.png"
 import MyBtn from "../MyBtn.vue"
 import { motion } from "motion-v"
 
-const cards = ref([
-  { name: "Portfolio Boomer", id: "cardID-1", sub: "One of the best selling prog type", tag: "$19" },
-  { name: "Growth Rocket", id: "cardID-2", sub: "High growth potential", tag: "$25" },
-  { name: "Steady Stream", id: "cardID-3", sub: "Consistent returns", tag: "$15" },
-  { name: "Tech Titan", id: "cardID-4", sub: "Tech-focused portfolio", tag: "$22" },
-  { name: "Value Vault", id: "cardID-5", sub: "Value investing picks", tag: "$18" },
-  { name: "Dividend Dynamo", id: "cardID-6", sub: "Dividend heavy", tag: "$20" },
-  { name: "Global Explorer", id: "cardID-7", sub: "International exposure", tag: "$24" },
-  { name: "Green Future", id: "cardID-8", sub: "Sustainable investments", tag: "$21" },
-  { name: "Small Cap Surge", id: "cardID-9", sub: "Small cap focus", tag: "$17" },
-  { name: "Blue Chip Bundle", id: "cardID-10", sub: "Blue chip stocks", tag: "$23" },
-  { name: "Innovation Index", id: "cardID-11", sub: "Innovative companies", tag: "$26" },
-  { name: "Balanced Basket", id: "cardID-12", sub: "Balanced allocation", tag: "$19" },
-  { name: "Emerging Edge", id: "cardID-13", sub: "Emerging markets", tag: "$22" },
-  { name: "Safe Harbor", id: "cardID-14", sub: "Low risk picks", tag: "$16" },
-  { name: "Crypto Craze", id: "cardID-15", sub: "Crypto assets", tag: "$30" },
-  { name: "Healthcare Hero", id: "cardID-16", sub: "Healthcare sector", tag: "$20" },
-  { name: "REIT Riches", id: "cardID-17", sub: "Real estate investments", tag: "$18" },
-  { name: "AI Advantage", id: "cardID-18", sub: "AI-focused stocks", tag: "$27" },
-  { name: "Millennial Mix", id: "cardID-19", sub: "Millennial trends", tag: "$21" }
-])
+const { getFeaturedProjects } = useProjects();
+
+// Fallback static data
+const fallbackCards = [
+  { name: "Portfolio Boomer", id: "1", slug: "portfolio-boomer", sub: "One of the best selling prog type", tag: "$19" },
+  { name: "Growth Rocket", id: "2", slug: "growth-rocket", sub: "High growth potential", tag: "$25" },
+  { name: "Steady Stream", id: "3", slug: "steady-stream", sub: "Consistent returns", tag: "$15" },
+  { name: "Tech Titan", id: "4", slug: "tech-titan", sub: "Tech-focused portfolio", tag: "$22" },
+  { name: "Value Vault", id: "5", slug: "value-vault", sub: "Value investing picks", tag: "$18" },
+  { name: "AI Advantage", id: "6", slug: "ai-advantage", sub: "AI-focused stocks", tag: "$27" },
+];
+
+// Fetch projects from Supabase
+const { data: fetchedCards } = await useAsyncData('home-carousel-projects', async () => {
+  try {
+    const data = await getFeaturedProjects(10);
+    if (data && data.length > 0) {
+      return data.map(p => ({
+        ...p,
+        sub: p.description,
+        tag: `₹${Math.round(p.price / 100)}`,
+      }));
+    }
+    return fallbackCards;
+  } catch (e) {
+    console.error('Failed to fetch carousel projects:', e);
+    return fallbackCards;
+  }
+});
+
+// Use fetched data or fallback
+const cards = computed(() => fetchedCards.value || fallbackCards);
 
 
 const cardBlur = ref(false)
@@ -143,7 +157,11 @@ const prevCard = () => {
 
 const goToProject = () => {
   const project = activeCards.value[1];
-  navigateTo(`/explore?project=${project.id}`);
+  if (project.slug) {
+    navigateTo(`/explore/${project.slug}`);
+  } else {
+    navigateTo(`/explore?project=${project.id}`);
+  }
 }
 
 
@@ -398,5 +416,13 @@ const goToProject = () => {
   box-shadow: inset 0 0 120px 90px rgba(0, 0, 0, 0.95);
   margin-bottom: 120px;
   /* filter: brightness(0.6) contrast(1.2); */
+}
+
+.card-text {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: -1px;
 }
 </style>

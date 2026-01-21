@@ -6,9 +6,9 @@
     </NuxtLink>
 
 
-    <NuxtLink to="/#prog">
+    <!-- <NuxtLink to="/#prog">
       <div class="nav">Projects</div>
-    </NuxtLink>
+    </NuxtLink> -->
 
     <NuxtLink to="/marketplace">
       <div class="nav">Marketplace</div>

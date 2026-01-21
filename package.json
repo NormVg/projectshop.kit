@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/supabase": "^2.0.3",
     "@vueuse/nuxt": "13.9.0",
     "highlight.js": "^11.11.1",
     "marked": "^16.4.0",
